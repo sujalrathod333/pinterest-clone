@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Pinterest Clone
 
-## Getting Started
-
-First, run the development server:
+## 🚀 Quick Start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📋 Features
+- ✅ User Registration (email/password + image upload)
+- ✅ Social Login (Google, GitHub via NextAuth)
+- ✅ MongoDB + Mongoose
+- ✅ Cloudinary image storage
+- ✅ TailwindCSS + Next.js 16 App Router
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🔧 Environment Variables (`.env.local`)
+```
+MONGODB_URI=mongodb+srv://...  # Your MongoDB connection
+CLOUDINARY_NAME=drglb999w
+CLOUDINARY_API_KEY=737464546527541
+CLOUDINARY_API_SECRET=L3-jxOEzaGget-48CpkKq4vUGyA
+GOOGLE_CLIENT_ID=560655492096-...
+GOOGLE_CLIENT_SECRET=GOCSPX-...
+GITHUB_CLIENT_ID=Ov23lixFW...
+GITHUB_CLIENT_SECRET=47081aece...
+NEXTAUTH_SECRET=vVlIEr/XOo...
+NEXTAUTH_URL=http://localhost:3000
+```
 
-## Learn More
+## 🐛 Recent Fixes
+- **Registration 500 Error**: Fixed Cloudinary config (env vars now load properly)
+- Image upload → Cloudinary → MongoDB user creation now works end-to-end
 
-To learn more about Next.js, take a look at the following resources:
+## 📂 Project Structure
+```
+pinterest/
+├── app/
+│   ├── register/page.jsx      # Registration form
+│   ├── api/auth/register/     # API route (fixed)
+│   └── api/auth/[...nextauth]/ # OAuth
+├── libs/
+│   ├── cloudinary.js         # Image upload (fixed)
+│   └── mongodb.js            # DB connection
+├── models/
+│   └── userModel.js          # User schema
+└── public/                   # Static assets
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧪 Testing Registration
+1. `npm run dev`
+2. Go to `/register`
+3. Fill form + upload avatar
+4. Submit → Redirects to `/signIn`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Status:** Production-ready. No known issues.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Happy pinning! 🎨
